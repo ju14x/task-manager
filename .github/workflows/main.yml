@@ -24,8 +24,8 @@ jobs:
       - name: Run isort
         run: python -m isort --check .
 
-      - name: Run blue
-        run: python -m blue --check .
+      - name: Run black
+        run: python -m black --check .
 
       - name: Run flake8
         run: python -m flake8 . --exclude=.venv

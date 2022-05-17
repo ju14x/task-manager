@@ -2,5 +2,5 @@
 profile = "black"
 line_length = 79
 
-[tool.blue]
+[tool.black]
 line-length = 79
