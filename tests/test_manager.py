@@ -1,6 +1,7 @@
-from fastapi.testclient import TestClient
-from task_manager.manager import app, TASKS
 from fastapi import status
+from fastapi.testclient import TestClient
+
+from task_manager.manager import TASKS, app
 
 
 def test_status_200():

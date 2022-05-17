@@ -1,0 +1,6 @@
+[tool.isort]
+profile = "blue"
+line_length = 79
+
+[tool.blue]
+line-length = 79

@@ -13,7 +13,7 @@ TASKS = [
         'title': 'study',
         'description': 'TDD',
         'state': 'ongoing',
-    }
+    },
 ]
 
 
