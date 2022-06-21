@@ -23,7 +23,14 @@ def test_return_list():
 
 
 def test_task_has_id():
-    TASKS.append({'id': 1})
+    TASKS.append(
+        {
+            'id': 1,
+            'title': 'title1',
+            'description': 'description1',
+            'state': 'done',
+        }
+    )
     cliente = TestClient(app)
     resp = cliente.get('/tasks')
     assert 'id' in resp.json().pop()
@@ -31,7 +38,14 @@ def test_task_has_id():
 
 
 def test_task_has_title():
-    TASKS.append({'title': 'title 1'})
+    TASKS.append(
+        {
+            'id': 1,
+            'title': 'title1',
+            'description': 'description1',
+            'state': 'done',
+        }
+    )
     cliente = TestClient(app)
     resp = cliente.get('/tasks')
     assert 'title' in resp.json().pop()
@@ -39,7 +53,14 @@ def test_task_has_title():
 
 
 def test_task_has_description():
-    TASKS.append({'description': 'random description'})
+    TASKS.append(
+        {
+            'id': 1,
+            'title': 'title1',
+            'description': 'description1',
+            'state': 'done',
+        }
+    )
     cliente = TestClient(app)
     resp = cliente.get('/tasks')
     assert 'description' in resp.json().pop()
@@ -47,7 +68,14 @@ def test_task_has_description():
 
 
 def test_task_has_state():
-    TASKS.append({'state': 'done'})
+    TASKS.append(
+        {
+            'id': 1,
+            'title': 'title1',
+            'description': 'description1',
+            'state': 'done',
+        }
+    )
     cliente = TestClient(app)
     resp = cliente.get('/tasks')
     assert 'state' in resp.json().pop()
@@ -119,4 +147,8 @@ def test_created_task_status_code_must_be_201():
 
 
 def test_created_task_must_be_persisted():
-    ...
+    cliente = TestClient(app)
+    task = {'title': 'title', 'description': 'description'}
+    cliente.post('/tasks', json=task)
+    assert len(TASKS) == 1
+    TASKS.clear()
