@@ -8,8 +8,8 @@ app = FastAPI()
 
 
 class PossibleStates(str, Enum):
-    done = "done"
-    unfinished = "unfinished"
+    done = 'done'
+    unfinished = 'unfinished'
 
 
 class EntryTask(BaseModel):
@@ -25,13 +25,13 @@ class Task(EntryTask):
 TASKS = []
 
 
-@app.get("/tasks")
+@app.get('/tasks')
 def list_tasks():
     return TASKS
 
 
-@app.post("/tasks", response_model=Task, status_code=status.HTTP_201_CREATED)
+@app.post('/tasks', response_model=Task, status_code=status.HTTP_201_CREATED)
 def create_task(task: EntryTask):
     new_task = task.dict()
-    new_task.update({"id": uuid4()})
+    new_task.update({'id': uuid4()})
     return new_task
