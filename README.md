@@ -3,6 +3,16 @@
 Task management software w/ FastAPI
 Done following [cassiobotaro](https://github.com/cassiobotaro/do_zero_a_implantacao/)'s tutorial, for learning purposes.
 
+### live preview
+
+access it on [*heroku*](https://pure-earth-57881.herokuapp.com/docs).
+
+to interact with endpoints on the docs:
+> https://pure-earth-57881.herokuapp.com/docs
+
+to check the tasks list:
+> https://pure-earth-57881.herokuapp.com/tasks
+
 ### how to run
 
 -   clone this repo
