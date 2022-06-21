@@ -37,3 +37,9 @@ pip install -r dev-requirements.txt
 ```sh
 uvicorn --reload task_manager.manager:app
 ```
+
+- execute tests:
+
+```sh
+python -m pytest
+```
