@@ -30,9 +30,29 @@ def list_tasks():
     return TASKS
 
 
+@app.get(
+    '/tasks/{task_id}',
+    response_model=Task,
+    status_code=status.HTTP_200_OK,
+)
+def get_task(task_id: UUID):
+    for task in TASKS:
+        if task['id'] == task_id:
+            return task
+    return status.HTTP_404_NOT_FOUND
+
+
 @app.post('/tasks', response_model=Task, status_code=status.HTTP_201_CREATED)
 def create_task(task: EntryTask):
     new_task = task.dict()
     new_task.update({'id': uuid4()})
     TASKS.append(new_task)
     return new_task
+
+
+@app.delete('/tasks/{task_id}', status_code=status.HTTP_204_NO_CONTENT)
+def delete_task(task_id: UUID):
+    for task in TASKS:
+        if task['id'] == task_id:
+            TASKS.remove(task)
+    return status.HTTP_404_NOT_FOUND

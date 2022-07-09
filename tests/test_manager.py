@@ -152,3 +152,23 @@ def test_created_task_must_be_persisted():
     cliente.post('/tasks', json=task)
     assert len(TASKS) == 1
     TASKS.clear()
+
+
+def test_task_url_exists():
+    cliente = TestClient(app)
+    task = {'title': 'title', 'description': 'description'}
+    resp = cliente.post('/tasks', json=task)
+    task_created = resp.json()
+    resp2 = cliente.get(f'/tasks/{task_created["id"]}')
+    assert resp2.status_code == status.HTTP_200_OK
+    TASKS.clear()
+
+
+def test_delete_task():
+    cliente = TestClient(app)
+    task = {'title': 'title', 'description': 'description'}
+    resp = cliente.post('/tasks', json=task)
+    task_created = resp.json()
+    resp2 = cliente.delete(f'/tasks/{task_created["id"]}')
+    assert resp2.status_code == status.HTTP_204_NO_CONTENT
+    TASKS.clear()
