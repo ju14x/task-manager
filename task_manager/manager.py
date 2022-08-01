@@ -64,6 +64,6 @@ def delete_task(task_id: UUID):
 def complete_task(task_id: UUID):
     for task in TASKS:
         if task['id'] == task_id:
-            task.update(json={'state': 'done'})
+            task.update(state='done')
             return task
     return status.HTTP_422_UNPROCESSABLE_ENTITY
