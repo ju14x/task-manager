@@ -56,3 +56,14 @@ def delete_task(task_id: UUID):
         if task['id'] == task_id:
             TASKS.remove(task)
     return status.HTTP_404_NOT_FOUND
+
+
+@app.patch(
+    '/tasks/{task_id}', response_model=Task, status_code=status.HTTP_200_OK
+)
+def complete_task(task_id: UUID):
+    for task in TASKS:
+        if task['id'] == task_id:
+            task.update(json={'state': 'done'})
+            return task
+    return status.HTTP_422_UNPROCESSABLE_ENTITY

@@ -172,3 +172,15 @@ def test_delete_task():
     resp2 = cliente.delete(f'/tasks/{task_created["id"]}')
     assert resp2.status_code == status.HTTP_204_NO_CONTENT
     TASKS.clear()
+
+
+def test_mark_task_as_done():
+    cliente = TestClient(app)
+    task = {'title': 'title', 'description': 'description'}
+    resp = cliente.post('/tasks', json=task)
+    task_created = resp.json()
+    resp2 = cliente.patch(
+        f'/tasks/{task_created["id"]}', json={'state': 'done'}
+    )
+    assert resp2.status_code == status.HTTP_200_OK
+    TASKS.clear()
