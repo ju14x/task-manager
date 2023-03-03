@@ -5,13 +5,13 @@ Done following [cassiobotaro](https://github.com/cassiobotaro/do_zero_a_implanta
 
 ### live preview
 
-access it on [*heroku*](https://pure-earth-57881.herokuapp.com/docs).
+access it on [railway](https://task-manager-production.up.railway.app/).
 
 to interact with endpoints on the docs:
-> https://pure-earth-57881.herokuapp.com/docs
+> https://task-manager-production.up.railway.app/docs
 
 to check the tasks list:
-> https://pure-earth-57881.herokuapp.com/tasks
+> https://task-manager-production.up.railway.app/tasks
 
 ### how to run
 
