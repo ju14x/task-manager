@@ -184,3 +184,7 @@ def test_mark_task_as_done():
     )
     assert resp2.status_code == status.HTTP_200_OK
     TASKS.clear()
+
+
+def test_order_tasks_by_state():
+    ...
